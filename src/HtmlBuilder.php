@@ -86,7 +86,7 @@ class HtmlBuilder
                 "/<script.*?>(.*)?<\/script>/im",
                 "$1",
                 $content
-            ); 
+            );
             return $string;
         } elseif (is_int($content)) {
             return $content;
@@ -185,10 +185,10 @@ class HtmlBuilder
     }
 
     public function addContentArray(
-        array $contents, string $tag, 
+        array $contents,
+        string $tag,
         string|array $attributes = []
-    )
-    {
+    ) {
         foreach ($contents as $content) {
             $this->addContent(
                 HtmlBuilder::create($tag, $content, $attributes)
