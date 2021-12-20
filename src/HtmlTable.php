@@ -44,7 +44,7 @@ class HtmlTable extends HtmlBuilder
         string|array|null $attributes = []
     ) {
         $table = self::create('table', null, $attributes);
-        if($thead) {
+        if ($thead) {
             foreach ($thead as $row) {
                 $table->addRow($row, 'header');
             }
@@ -52,7 +52,7 @@ class HtmlTable extends HtmlBuilder
         foreach ($tbody as $row) {
             $table->addRow($row);
         }
-        if($tfoot) {
+        if ($tfoot) {
             foreach ($tfoot as $row) {
                 $table->addRow($row, 'footer');
             }

@@ -42,4 +42,3 @@ function span(
 ) {
     return Html::span($text, $attributes);
 }
-
