@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+input,
+select {@apply border rounded p-1;}
+
+.table { @apply w-full; }
+.title { @apply text-xl font-semibold text-blue-500; }

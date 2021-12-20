@@ -1,0 +1,26 @@
+{
+    "name": "jaimercz/html-builder",
+    "description": "A very simple HTML library.",
+    "type": "library",
+    "require": {
+        "php": "^8.0"
+    },
+    "license": "All rights reserved.",
+    "autoload": {
+        "psr-4": {
+            "JamesRCZ\\HtmlBuilder\\": "src/"
+        },
+        "files": ["src/functions.php"]
+    },
+    "authors": [
+        {
+            "name": "James",
+            "email": "james@sglms.com"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}
