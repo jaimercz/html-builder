@@ -30,9 +30,11 @@ function h(
     return Html::h($n, $text, $attributes);
 }
 
-function p(string $text)
-{
-    return Html::p($text);
+function p(
+    ?string $text = null,
+    string|array $attributes=[]
+) {
+    return Html::p($text, $attributes);
 }
 
 function span(
