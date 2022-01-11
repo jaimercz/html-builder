@@ -16,6 +16,7 @@ class HtmlBuilder
         'b',
         'blockquote',
         'body',
+        'button',
         'caption',
         'dd',
         'div',
@@ -40,6 +41,7 @@ class HtmlBuilder
         'ol',
         'option',
         'p',
+        'script',
         'section',
         'select',
         'span',
@@ -107,7 +109,7 @@ class HtmlBuilder
                 $this->attributes ['value'] = implode($this->contents);
             }
             $string = sprintf(
-                "<%s %s/>\n",
+                "<%s %s />",
                 $this->tag,
                 implode(" ", array_map(
                     function ($v, $a) {
@@ -119,7 +121,7 @@ class HtmlBuilder
             );
         } else {
             $string = sprintf(
-                "<%s%s>%s</%s>\n",
+                "<%s%s>%s</%s>",
                 $this->tag,
                 $this->attributes ?
                 " " . implode(" ", array_map(

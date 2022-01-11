@@ -21,11 +21,14 @@ class HtmlForm extends HtmlBuilder
         int|string|HtmlBuilder $content = null,
         string|array $attributes = []
     ): HtmlForm {
-        self::$form             = new self('table');
+        self::$form             = new self('form');
         self::$form->tag        = 'form';
         self::$form->fieldset   = HtmlBuilder::create('fieldset');
 
         self::$form->attributes = self::parseAttributes($attributes);
+        if(!self::$form->getAttribute('method')) {
+            self::$form->setAttribute('method', "post");
+        }
 
         return self::$form;
     }
@@ -63,4 +66,11 @@ class HtmlForm extends HtmlBuilder
         $this->fieldset->addContent($row);
         return $this;
     }
+
+    public function button(string $value, string|array $attributes = null) {
+        $btn = Html::create('button', $value, $attributes);
+        $this->fieldset->addContent($btn);
+        return $this;
+    }
+
 }

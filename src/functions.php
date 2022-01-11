@@ -11,7 +11,6 @@ function a(
     ?string $href = null
 ) {
     $a = HtmlBuilder::create('a', $text, $attributes ?? '');
-    $a->addClass("pointer");
     $href ? $a->setAttribute('href', $href) : false;
     return $a;
 }
@@ -31,9 +30,11 @@ function h(
     return Html::h($n, $text, $attributes);
 }
 
-function p(string $text)
-{
-    return Html::p($text);
+function p(
+    ?string $text = null,
+    string|array $attributes=[]
+) {
+    return Html::p($text, $attributes);
 }
 
 function span(
@@ -41,4 +42,10 @@ function span(
     string|array $attributes=[]
 ) {
     return Html::span($text, $attributes);
+}
+
+function fa(
+    ?string $class = null
+) {
+    return Html::create('i', null, $class);
 }
