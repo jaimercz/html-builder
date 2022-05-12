@@ -140,7 +140,7 @@ class HtmlBuilder
 
     public static function create(
         string $tag,
-        int|string|HtmlBuilder $content = null,
+        int|float|string|HtmlBuilder $content = null,
         string|array $attributes = []
     ): HtmlBuilder {
         self::$instance          = new self($tag);
