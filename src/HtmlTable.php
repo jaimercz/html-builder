@@ -23,7 +23,7 @@ class HtmlTable extends HtmlBuilder
 
     public static function create(
         string $tag = 'table',
-        int|string|HtmlBuilder $content = null,
+        int|float|string|HtmlBuilder $content = null,
         string|array $attributes = []
     ): HtmlTable {
         self::$table          = new self('table');
