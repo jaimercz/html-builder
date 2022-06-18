@@ -1,14 +1,33 @@
-.DS_Store
+# VS &VSCode
+.vscode/settings.json
+.vscode/launch.json
+.vs
 
-/vendor/
+# Netbeans
+/nbproject
+/nbproject/private/
 
-/node_modules/
 
-.php-cs-fixer.cache
-
+# ctags
 /tags
 /tags.lock
 /tags.temp
 
+# Composer
+/vendor
+
+# Mac
+.DS_Store
+
+# Vim
+.*.swp
+.php-cs-fixer.cache
+.php_cs.cache
 .sass-cache
+
+# Http
+.htaccess
+
+# npm
+/node_modules
 

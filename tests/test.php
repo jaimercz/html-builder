@@ -6,6 +6,9 @@ use JamesRCZ\HtmlBuilder\Html;
 use JamesRCZ\HtmlBuilder\HtmlBuilder;
 use JamesRCZ\HtmlBuilder\HtmlTable;
 use JamesRCZ\HtmlBuilder\functions;
+use function JamesRCZ\HtmlBuilder\a;
+use function JamesRCZ\HtmlBuilder\fa;
+use function JamesRCZ\HtmlBuilder\span;
 
 require_once "../vendor/autoload.php";
 
@@ -63,7 +66,8 @@ $table2->setColumnAttributes(2, 'text-red-500');
 $body->addContent($table2);
 
 $body->addContent(Html::p(_("A paragraph")));
-$body->addContent(p("OOOOO"));
+$body->addContent(a(_("A link"), null, '/'));
+$body->addContent(a(fa(_("A link")), null, '/'));
 
 $form = Html::form([
     [
