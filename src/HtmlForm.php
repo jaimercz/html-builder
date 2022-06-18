@@ -18,7 +18,7 @@ class HtmlForm extends HtmlBuilder
 
     public static function create(
         string $tag = 'form',
-        int|string|HtmlBuilder $content = null,
+        int|float|string|HtmlBuilder $content = null,
         string|array $attributes = []
     ): HtmlForm {
         self::$form             = new self('form');
@@ -26,7 +26,7 @@ class HtmlForm extends HtmlBuilder
         self::$form->fieldset   = HtmlBuilder::create('fieldset');
 
         self::$form->attributes = self::parseAttributes($attributes);
-        if(!self::$form->getAttribute('method')) {
+        if (!self::$form->getAttribute('method')) {
             self::$form->setAttribute('method', "post");
         }
 
@@ -67,10 +67,10 @@ class HtmlForm extends HtmlBuilder
         return $this;
     }
 
-    public function button(string $value, string|array $attributes = null) {
+    public function button(string $value, string|array $attributes = null)
+    {
         $btn = Html::create('button', $value, $attributes);
         $this->fieldset->addContent($btn);
         return $this;
     }
-
 }

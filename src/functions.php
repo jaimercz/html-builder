@@ -6,7 +6,7 @@ use JamesRCZ\HtmlBuilder\HtmlBuilder;
 use JamesRCZ\HtmlBuilder\Html;
 
 function a(
-    string $text,
+    string|HtmlBuilder $text,
     string|array $attributes = null,
     ?string $href = null
 ) {
