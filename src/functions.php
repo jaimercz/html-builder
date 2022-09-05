@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * SGLMS HTML Builder
+ *
+ * PHP Version 8.1
+ *
+ * @category SGLMS_Library
+ * @package  HTMLBuilder
+ * @author   Jaime C. Rubin-de-Celis <james@sglms.com>
+ * @license  MIT (https://sglms.com/license)
+ * @link     https://sglms.com
+ **/
+
+declare(strict_types=1);
+
 namespace JamesRCZ\HtmlBuilder;
 
 use JamesRCZ\HtmlBuilder\HtmlBuilder;
@@ -16,36 +30,42 @@ function a(
 }
 
 function div(
-    ?string $text = null,
+    string|HtmlBuilder $text = null,
     string|array $attributes=[]
 ) {
     return Html::div($text, $attributes);
 }
 
+function fa(
+    string|array $attributes = []
+) {
+    return Html::create('i', null, $attributes);
+}
+
 function h(
     int $n,
-    string $text,
+    string|HtmlBuilder $text,
     string|array $attributes = []
 ) {
     return Html::h($n, $text, $attributes);
 }
 
+function i(
+    string|array $attributes = []
+) {
+    return Html::create('i', null, $attributes);
+}
+
 function p(
-    ?string $text = null,
+    string|HtmlBuilder $text = null,
     string|array $attributes=[]
 ) {
     return Html::p($text, $attributes);
 }
 
 function span(
-    ?string $text = null,
+    string|HtmlBuilder $text = null,
     string|array $attributes=[]
 ) {
-    return Html::span($text, $attributes);
-}
-
-function fa(
-    ?string $class = null
-) {
-    return Html::create('i', null, $class);
+    return Html::create('span', $text, $attributes);
 }

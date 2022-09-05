@@ -1,41 +1,65 @@
 <?php
 
+/**
+ * SGLMS HTML Builder
+ *
+ * PHP Version 8.1
+ *
+ * @category SGLMS_Library
+ * @package  HTMLBuilder
+ * @author   Jaime C. Rubin-de-Celis <james@sglms.com>
+ * @license  MIT (https://sglms.com/license)
+ * @link     https://sglms.com
+ **/
+
 declare(strict_types=1);
 
 use JamesRCZ\HtmlBuilder\Html;
 use JamesRCZ\HtmlBuilder\HtmlBuilder;
 use JamesRCZ\HtmlBuilder\HtmlTable;
 use JamesRCZ\HtmlBuilder\functions;
+
 use function JamesRCZ\HtmlBuilder\a;
+use function JamesRCZ\HtmlBuilder\div;
 use function JamesRCZ\HtmlBuilder\fa;
+use function JamesRCZ\HtmlBuilder\p;
 use function JamesRCZ\HtmlBuilder\span;
 
 require_once "../vendor/autoload.php";
 
 $html = HtmlBuilder::create('html');
 
+// Head
 $head = HtmlBuilder::create('head');
-$head->addContent(HtmlBuilder::create(
-    'link',
-    null,
-    [
-        'rel' => "stylesheet",
-        'href' => "./../dist/app.css"
-    ]
-));
-$head->addContent(HtmlBuilder::create(
-    'meta',
-    null,
-    [
-        'name'    => "viewport",
-        'content' => "width=device-width, initial-scale=1.0"
-    ]
-));
-$head->addContent(HtmlBuilder::create(
-    'title',
-    "Html Builder Test Page"
-));
+$head->addContent(
+    HtmlBuilder::create(
+        'title',
+        "Html Builder Test Page"
+    )
+);
 
+$head->addContent(
+    HtmlBuilder::create(
+        'link',
+        null,
+        [
+            'rel' => "stylesheet",
+            'href' => "./../dist/app.css"
+        ]
+    )
+);
+$head->addContent(
+    HtmlBuilder::create(
+        'meta',
+        null,
+        [
+            'name'    => "viewport",
+            'content' => "width=device-width, initial-scale=1.0"
+        ]
+    )
+);
+
+// Footer
 $footer = HtmlBuilder::create(
     'footer',
     "This is the footer",
@@ -69,19 +93,22 @@ $body->addContent(Html::p(_("A paragraph")));
 $body->addContent(a(_("A link"), null, '/'));
 $body->addContent(a(fa(_("A link")), null, '/'));
 
-$form = Html::form([
+$form = Html::form(
     [
-        _("Label 1"),
-        Html::input('fist namE', ['value'=>1000]),
-        'text-red-200'
+        [
+            _("Label 1"),
+            Html::input('fist name', ['value'=>1000]),
+            'text-red-200'
+        ],
+        [_("Label 2"), Html::input('second'), 'grid grid-cols-2 text-red-800 text-right'],
+        [_("Label 3"), Html::select([1,2]), 'grid grid-cols-2 my-2'],
+        [
+            Html::span(null, 'w-1/3 inline-block border-4'),
+            Html::span("Here")
+        ]
     ],
-    [_("Label 2"), Html::input('second'), 'grid grid-cols-2 text-red-800 text-right'],
-    [_("Label 3"), Html::select([1,2]), 'grid grid-cols-2 my-2'],
-    [
-        Html::span(null, 'w-1/3 inline-block border-4'),
-        Html::span("Here")
-    ]
-], 'p-2 m-2 shadow');
+    'p-2 m-2 shadow'
+);
 $body->addContent($form);
 
 $ul = HtmlBuilder::create('ul');

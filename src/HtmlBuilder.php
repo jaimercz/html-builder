@@ -1,9 +1,32 @@
 <?php
 
+/**
+ * SGLMS HTML Builder
+ *
+ * PHP Version 8.1
+ *
+ * @category SGLMS_Library
+ * @package  HTMLBuilder
+ * @author   Jaime C. Rubin-de-Celis <james@sglms.com>
+ * @license  MIT (https://sglms.com/license)
+ * @link     https://sglms.com
+ **/
+
 declare(strict_types=1);
 
 namespace JamesRCZ\HtmlBuilder;
 
+/**
+ * SGLMS HTML Builder
+ *
+ * PHP Version 8.1
+ *
+ * @category SGLMS_Library
+ * @package  HTMLBuilder
+ * @author   Jaime C. Rubin-de-Celis <james@sglms.com>
+ * @license  MIT (https://sglms.com/license)
+ * @link     https://sglms.com
+ **/
 class HtmlBuilder
 {
     protected static ?HtmlBuilder $instance = null;
@@ -138,11 +161,25 @@ class HtmlBuilder
         return $string;
     }
 
+    public function __toString(): string
+    {
+        return $this->render();
+    }
+
+    /**
+     * Create HTML Tag
+     *
+     * @param string           $tag        Tag Name
+     * @param int|float|string $content    Tag Content
+     * @param string|array     $attributes Attributes
+     *
+     * @return \JamesRCZ\HtmlBuilder\HtmlBuilder
+     **/
     public static function create(
         string $tag,
         int|float|string|HtmlBuilder $content = null,
         string|array $attributes = []
-    ): HtmlBuilder {
+    ): \JamesRCZ\HtmlBuilder\HtmlBuilder {
         self::$instance          = new self($tag);
         self::$instance->tag     = in_array(
             strtolower($tag),
@@ -159,11 +196,6 @@ class HtmlBuilder
         self::$instance->attributes = self::parseAttributes($attributes);
 
         return self::$instance;
-    }
-
-    public function __toString(): string
-    {
-        return $this->render();
     }
 
     public function addClass(string $class)
@@ -220,8 +252,10 @@ class HtmlBuilder
         return $this;
     }
 
-    public function mergeAttribute(string $attribute, string $value)
-    {
+    public function mergeAttribute(
+        string $attribute,
+        string $value
+    ): \JamesRCZ\HtmlBuilder\HtmlBuilder {
         if (isset($this->attributes[$attribute])) {
             $classes = preg_split(
                 "/\s/",
@@ -242,10 +276,12 @@ class HtmlBuilder
         } else {
             $this->setAttribute($attribute, $value);
         }
+        return $this;
     }
 
-    public function removeAttribute(string $attribute)
-    {
+    public function removeAttribute(
+        string $attribute
+    ): \JamesRCZ\HtmlBuilder\HtmlBuilder {
         unset($this->attributes[$attribute]);
         return $this;
     }
@@ -275,13 +311,15 @@ class HtmlBuilder
         return false;
     }
 
-    public function setAttribute(string $attribute, string $value = null)
-    {
+    public function setAttribute(
+        string $attribute,
+        string $value = null
+    ): \JamesRCZ\HtmlBuilder\HtmlBuilder {
         $this->attributes [$attribute] = $value;
         return $this;
     }
 
-    public function setAttributes(array $attributes)
+    public function setAttributes(array $attributes): \JamesRCZ\HtmlBuilder\HtmlBuilder
     {
         $this->attributes = $attributes;
         return $this;
