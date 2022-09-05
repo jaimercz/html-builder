@@ -68,6 +68,7 @@ class HtmlBuilder
         'section',
         'select',
         'span',
+        'style',
         'table',
         'tbody',
         'td',
