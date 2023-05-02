@@ -41,6 +41,7 @@ class HtmlBuilder
         'body',
         'button',
         'caption',
+        'code',
         'dd',
         'div',
         'dl',
